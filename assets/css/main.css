@@ -1,4 +1,5 @@
-html, body{
+html,
+body {
 	margin: 0;
 	padding: 0;
 	font-family: 'Roboto', sans-serif;
@@ -6,11 +7,11 @@ html, body{
 
 /********** MAIN PAGE **********/
 
-header{
+header {
 	background: salmon;
 }
 
-header input{
+header input {
 	padding: 5px 10px;
 	border: 2px solid white;
 	border-radius: 3px;
@@ -19,75 +20,84 @@ header input{
 	margin: 10px 15px;
 }
 
-header p{
+header p {
 	margin-left: 15px;
 }
 
-h1, h3{
+h1,
+h3 {
 	text-align: center;
 }
 
-h3{
+h3 {
 	margin-top: 0;
 	background: salmon;
 	color: white;
 	padding: 5px 0;
 }
 
-hr{
+.changecolor {
+	background-color: inherit;
+	color: red;
+}
+
+hr {
 	border: 1px solid lightgrey;
 	width: 75%;
 	display: block;
 	margin: auto;
 }
 
-.error-message{
+.error-message {
 	background: red;
 	color: white;
 	padding: 20px;
 	text-align: center;
 }
 
-.newAccount{
+.newAccount {
 	padding: 0 15px;
 	display: block;
 	max-width: 290px;
 	margin: 30px auto;
 }
 
-.card{
+.card {
 	border: 2px solid salmon;
 	margin: 15px;
 	border-radius: 5px;
 }
 
-.card-container{
+.card-container {
 	max-width: 450px;
 	margin: auto;
 }
 
-.card-content{
+.card-content {
 	padding: 10px;
 }
 
-.card form{
+.card form {
 	margin: 10px 0;
 }
 
-.card input, .card select, .newAccount select, .newAccount input{
+.card input,
+.card select,
+.newAccount select,
+.newAccount input {
 	width: 100%;
 	height: 30px;
 	margin: 5px 0;
 }
 
-.delete{
-	margin-top: 30px!important;
+.delete {
+	margin-top: 30px !important;
 }
 
-.delete input{
+.delete input {
 	width: 52%;
 	display: block;
-	margin: auto!important;
+	margin: auto !important;
 	background: salmon;
 	color: white;
 	border: 0;
@@ -95,31 +105,31 @@ hr{
 
 
 
-.alert{
+.alert {
 	color: red;
 }
 
-.flex{
+.flex {
 	display: flex;
 }
 
-.margin-right{
+.margin-right {
 	margin-right: auto;
 }
 
-.main-content{
+.main-content {
 	justify-content: space-between;
 	flex-wrap: wrap;
 }
 
 /********** LOGIN/REGISTRATION PAGE **********/
 
-.connexion{
+.connexion {
 	max-width: 400px;
 	margin: 30px auto;
 }
 
-.connexion form{
+.connexion form {
 	/* border: 2px solid salmon; */
 	border-radius: 3px;
 	margin: 15px;
@@ -127,18 +137,18 @@ hr{
 	padding: 10px;
 }
 
-.connexion input{
+.connexion input {
 	height: 30px;
 	margin: 10px 0;
 }
 
-.connexion input[type=submit]{
+.connexion input[type=submit] {
 	background: salmon;
 	color: white;
 	border: salmon 1px solid;
 }
 
-.connexion p{
+.connexion p {
 	text-align: center;
 }
 
@@ -149,12 +159,12 @@ hr{
 
 	/********** MAIN PAGE **********/
 
-	.card-container{
+	.card-container {
 		width: 45%;
 		margin: auto;
 	}
 
-	.connexion{
+	.connexion {
 		margin: 100px auto;
 	}
 }
