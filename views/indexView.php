@@ -21,6 +21,8 @@ include('includes/header.php');
 
 	<h1>Mon application bancaire</h1>
 
+	<h2 class="col-12 text-center">Bonjour, <?php echo $_SESSION['name']; ?> nous sommes ravis de vous revoir</h2>
+
 	<form class="newAccount" action="../controllers/index.php" method="post">
 		<label>Sélectionner un type de compte</label>
 		<select class="" name="name" required>
@@ -49,7 +51,11 @@ include('includes/header.php');
 				<h3><strong><?php echo $account->getName(); ?></strong></h3>
 				<div class="card-content">
 
-
+					<?php if ($account->getBalance() < 0) {
+            ?>
+					<h3>/!\ COMPTE EN NEGATIF /!\</h3>
+					<?php
+        } ?>
 					<p>Somme disponible : <?php echo $account->getBalance(); ?> €</p>
 
 					<!-- Formulaire pour dépot/retrait -->
