@@ -4,10 +4,19 @@ include('includes/header.php');
 
 ?>
 
-<div class="container">
+<div class="col-12 m-0 p-0">
 
-	<header class="flex">
-		<p class="margin-right">Bienvenue sur l'application Comptes Bancaires</p>
+	<header class="flex header">
+		<a href="index.php" class="margin-right">Bienvenue sur l'application Comptes Bancaires</a>
+		<?php if (empty($_SESSION['name'])) {
+    ?>
+        <a href="login.php">Connection</a>
+		<?php
+} else {
+        ?>
+	<a href="disconnect.php">Deconnection</a>
+<?php
+    } ?>
 	</header>
 
 	<h1>Mon application bancaire</h1>
@@ -17,10 +26,10 @@ include('includes/header.php');
 		<select class="" name="name" required>
 			<option value="">Choisissez le type de compte à ouvrir</option>
 			<?php foreach ($typeAccount as $account) {
-    ?>
+        ?>
 				<option value="<?php echo $account ?>"><?php echo $account ?></option>
 			<?php
-} ?>
+    } ?>
 		</select>
 		<input type="submit" name="new" value="Ouvrir un nouveau compte">
 	</form>

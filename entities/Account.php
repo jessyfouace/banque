@@ -7,6 +7,7 @@ class Account
     protected $id;
     protected $name;
     protected $balance;
+    protected $idAccount;
 
     /**
      * constructor
@@ -73,6 +74,19 @@ class Account
     }
 
     /**
+     * Set the value of idAccount
+     *
+     * @return  self
+     */
+    public function setIdAccount($idAccount)
+    {
+        $idAccount = (int) $idAccount;
+        $this->idAccount = $idAccount;
+
+        return $this;
+    }
+
+    /**
      * Get the value of id
      */
     public function getId()
@@ -94,6 +108,14 @@ class Account
     public function getBalance()
     {
         return $this->balance;
+    }
+
+    /**
+     * Get the value of idAccount
+     */
+    public function getIdAccount()
+    {
+        return $this->idAccount;
     }
 
     public function creditBalance($balance)
@@ -124,7 +146,4 @@ class Account
         $removeBalance = $this->getBalance() - $balance;
         return $this->setBalance($removeBalance);
     }
-    // if ($this->getName() !== $target->getName()) {
-
-        // }
 }
