@@ -11,7 +11,7 @@
 		<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 		<!-- Place favicon.ico in the root directory -->
 		<link rel="icon" href="../favicon.ico">
-
+        <link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="../assets/css/main.css">
     </head>
     <body>

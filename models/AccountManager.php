@@ -14,8 +14,9 @@ class AccountManager
     public function verifAccount(Account $user)
     {
         $nameDisponibility = "";
-        $query = $this->getBdd()->prepare('SELECT * FROM accounts WHERE name = :name');
-        $query->bindValue(':name', $user->getName(), PDO::PARAM_STR);
+        $query = $this->getBdd()->prepare('SELECT * FROM accounts WHERE name = :name and idAccount = :idAccount');
+        $query->bindValue(':name', $user->getName(), PDO::PARAM_INT);
+        $query->bindValue(':idAccount', $user->getIdAccount(), PDO::PARAM_INT);
         $query->execute();
         $userInfo = $query->fetchAll(PDO::FETCH_ASSOC);
 
@@ -26,11 +27,12 @@ class AccountManager
         return $nameDisponibility;
     }
 
-    public function takeAccountById(int $id)
+    public function takeAccountById(int $id, int $idAccount)
     {
         $idExist = "";
-        $query = $this->getBdd()->prepare('SELECT * FROM accounts WHERE id = :id');
+        $query = $this->getBdd()->prepare('SELECT * FROM accounts WHERE id = :id and idAccount = :idAccount');
         $query->bindValue(':id', $id, PDO::PARAM_INT);
+        $query->bindValue(':idAccount', $idAccount, PDO::PARAM_INT);
         $query->execute();
         $checkId = $query->fetchAll(PDO::FETCH_ASSOC);
 
@@ -47,10 +49,11 @@ class AccountManager
      *
      * @return self
      */
-    public function takeAccounts()
+    public function takeAccounts(int $idAccount)
     {
         $arrayAccounts = [];
-        $query = $this->getBdd()->prepare('SELECT * FROM accounts');
+        $query = $this->getBdd()->prepare('SELECT * FROM accounts WHERE idAccount = :idAccount');
+        $query->bindValue(':idAccount', $idAccount, PDO::PARAM_INT);
         $query->execute();
         $allAccounts = $query->fetchAll(PDO::FETCH_ASSOC);
 
@@ -69,9 +72,10 @@ class AccountManager
      */
     public function addAccount(Account $user)
     {
-        $query = $this->getBdd()->prepare('INSERT INTO accounts(name, balance) VALUES(:name, :balance)');
+        $query = $this->getBdd()->prepare('INSERT INTO accounts(name, balance, idAccount) VALUES(:name, :balance, :idAccount)');
         $query->bindValue(':name', $user->getName(), PDO::PARAM_STR);
         $query->bindValue(':balance', $user->getBalance(), PDO::PARAM_INT);
+        $query->bindValue(':idAccount', $user->getIdAccount(), PDO::PARAM_INT);
         $query->execute();
     }
 
@@ -83,15 +87,17 @@ class AccountManager
      */
     public function removeAccount(Account $user)
     {
-        $query = $this->getBdd()->prepare('DELETE FROM accounts WHERE id = :id');
-        $query->bindValue(':id', $user->getId(), PDO::PARAM_STR);
+        $query = $this->getBdd()->prepare('DELETE FROM accounts WHERE id = :id and idAccount = :idAccount');
+        $query->bindValue(':id', $user->getId(), PDO::PARAM_INT);
+        $query->bindValue(':idAccount', $user->getIdAccount(), PDO::PARAM_INT);
         $query->execute();
     }
 
     public function updateAccount(Account $user)
     {
-        $updateBdd = $this->getBdd()->prepare('UPDATE accounts SET balance = :balance WHERE id = :id');
-        $updateBdd->bindValue(':id', $user->getId(), PDO::PARAM_STR);
+        $updateBdd = $this->getBdd()->prepare('UPDATE accounts SET balance = :balance WHERE id = :id and idAccount = :idAccount');
+        $updateBdd->bindValue(':id', $user->getId(), PDO::PARAM_INT);
+        $updateBdd->bindValue(':idAccount', $user->getIdAccount(), PDO::PARAM_INT);
         $updateBdd->bindValue(':balance', $user->getBalance(), PDO::PARAM_STR);
         $updateBdd->execute();
     }
