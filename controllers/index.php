@@ -28,11 +28,19 @@ if (!empty($_SESSION['id'])) {
     if (isset($_POST['name'])) {
         if ($_POST['name'] == 'PEL' || $_POST['name'] == 'Compte Courant' || $_POST['name'] == 'Livret A' || $_POST['name'] == 'Compte Joint') {
             // instance new account
-            $createAccount = new Account([
-                'name' => $_POST['name'],
-                'balance' => 80,
-                'idAccount' => $_SESSION['id']
-            ]);
+            if ($_POST['name'] == "Compte Courant") {
+                $createAccount = new Account([
+                    'name' => $_POST['name'],
+                    'balance' => 80,
+                    'idAccount' => $_SESSION['id']
+                ]);
+            } else {
+                $createAccount = new Account([
+                    'name' => $_POST['name'],
+                    'balance' => 0,
+                    'idAccount' => $_SESSION['id']
+                ]);
+            }
             // check if account is no't create
             $verifAccount = $accountManager->verifAccount($createAccount);
             // if he's no't create
