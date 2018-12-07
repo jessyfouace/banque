@@ -118,6 +118,12 @@ class Account
         return $this->idAccount;
     }
 
+    /**
+     * credit user balance
+     *
+     * @param [type] $balance
+     * @return self
+     */
     public function creditBalance($balance)
     {
         $balance = (int) $balance;
@@ -125,6 +131,12 @@ class Account
         return $this->setBalance($balance);
     }
 
+    /**
+     * debit user balance
+     *
+     * @param [type] $balance
+     * @return void
+     */
     public function debitBalance($balance)
     {
         $balance = (int) $balance;
@@ -132,6 +144,13 @@ class Account
         return $this->setBalance($balance);
     }
 
+    /**
+     * transfert to another account
+     *
+     * @param Account $user
+     * @param [type] $balance
+     * @return self
+     */
     public function transfertBalance(Account $user, $balance)
     {
         $balance = (int) $balance;
@@ -140,6 +159,12 @@ class Account
         return $user->setBalance($addBalance);
     }
 
+    /**
+     * remove from transfert
+     *
+     * @param [type] $balance
+     * @return self
+     */
     public function removeBalance($balance)
     {
         $balance = (int) $balance;

@@ -11,6 +11,12 @@ class AccountManager
         $this->setBdd($bdd);
     }
 
+    /**
+     * verif if account exist
+     *
+     * @param Account $user
+     * @return self
+     */
     public function verifAccount(Account $user)
     {
         $nameDisponibility = "";
@@ -27,6 +33,13 @@ class AccountManager
         return $nameDisponibility;
     }
 
+    /**
+     * take account by user id
+     *
+     * @param integer $id
+     * @param integer $idAccount
+     * @return self
+     */
     public function takeAccountById(int $id, int $idAccount)
     {
         $idExist = "";
@@ -93,6 +106,12 @@ class AccountManager
         $query->execute();
     }
 
+    /**
+     * update user account
+     *
+     * @param Account $user
+     * @return void
+     */
     public function updateAccount(Account $user)
     {
         $updateBdd = $this->getBdd()->prepare('UPDATE accounts SET balance = :balance WHERE id = :id and idAccount = :idAccount');

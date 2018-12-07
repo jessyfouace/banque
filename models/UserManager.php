@@ -8,6 +8,12 @@ class UserManager
         $this->setBdd($bdd);
     }
 
+    /**
+     * verif if user exist
+     *
+     * @param User $user
+     * @return self
+     */
     public function verifUser(User $user)
     {
         $query = $this->getBdd()->prepare('SELECT * FROM user WHERE name = :name');
@@ -19,6 +25,12 @@ class UserManager
         }
     }
 
+    /**
+     * verif if user as disponibility for sign up
+     *
+     * @param User $user
+     * @return self
+     */
     public function verifUserDispo(User $user)
     {
         $query = $this->getBdd()->prepare('SELECT * FROM user WHERE name = :name');
@@ -30,6 +42,12 @@ class UserManager
         }
     }
 
+    /**
+     * create user
+     *
+     * @param User $user
+     * @return self
+     */
     public function createUser(User $user)
     {
         $query = $this->getBdd()->prepare('INSERT INTO user(name, password, verifConnect) VALUES(:name, :password, :verifConnect)');
@@ -39,6 +57,12 @@ class UserManager
         $query->execute();
     }
 
+    /**
+     * update user
+     *
+     * @param User $user
+     * @return self
+     */
     public function updateUser(User $user)
     {
         $updateBdd = $this->_bdd->prepare('UPDATE user SET verifConnect = :verifConnect WHERE id = :id');
@@ -47,14 +71,12 @@ class UserManager
         $updateBdd->execute();
     }
 
-    public function setAdmin(User $user)
-    {
-        $updateBdd = $this->_bdd->prepare('UPDATE user SET admin = :admin WHERE id = :id');
-        $updateBdd->bindValue(':id', $user->getId(), PDO::PARAM_INT);
-        $updateBdd->bindValue(':admin', $user->getAdmin(), PDO::PARAM_STR);
-        $updateBdd->execute();
-    }
-
+    /**
+     * get user by id
+     *
+     * @param integer $id
+     * @return self
+     */
     public function getUserById(int $id)
     {
         $query = $this->getBdd()->prepare('SELECT * FROM user WHERE id = :id');
@@ -66,6 +88,7 @@ class UserManager
         }
     }
 
+    /** get user by name */
     public function getUserByName(string $name)
     {
         $query = $this->getBdd()->prepare('SELECT * FROM user WHERE name = :name');

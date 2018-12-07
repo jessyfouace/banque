@@ -16,11 +16,15 @@ spl_autoload_register('chargerClasse');
 
 session_start();
 
+// check if user is connected
 if (!empty($_SESSION['id'])) {
+    // connect to db
     $bdd = Database::BDD();
 
+    // instance a new manager
     $userManager = new UserManager($bdd);
 
+    // instance a new user for reset verifconnect of db
     $objectUser = new User([
         'id' => $_SESSION['id'],
         'name' => $_SESSION['name'],
@@ -28,10 +32,13 @@ if (!empty($_SESSION['id'])) {
         'verifConnect' => 0
     ]);
 
+    // update user
     $updateUser = $userManager->updateUser($objectUser);
 
+    // destroy session
     session_destroy();
     
+    // return user to login page
     header('location: login.php');
 } else {
     header('location: login.php');
