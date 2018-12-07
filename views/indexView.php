@@ -23,7 +23,7 @@ include('includes/header.php');
 
 	<h2 class="col-12 text-center">Bonjour, <?php echo $_SESSION['name']; ?> nous sommes ravis de vous revoir</h2>
 
-	<form class="newAccount" action="../controllers/index.php" method="post">
+	<form class="newAccount" action="index.php" method="post">
 		<label>Sélectionner un type de compte</label>
 		<select class="" name="name" required>
 			<option value="">Choisissez le type de compte à ouvrir</option>
