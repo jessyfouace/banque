@@ -21,7 +21,7 @@ class AccountManager
     {
         $nameDisponibility = "";
         $query = $this->getBdd()->prepare('SELECT * FROM accounts WHERE name = :name and idAccount = :idAccount');
-        $query->bindValue(':name', $user->getName(), PDO::PARAM_INT);
+        $query->bindValue(':name', $user->getName(), PDO::PARAM_STR);
         $query->bindValue(':idAccount', $user->getIdAccount(), PDO::PARAM_INT);
         $query->execute();
         $userInfo = $query->fetchAll(PDO::FETCH_ASSOC);
@@ -117,7 +117,7 @@ class AccountManager
         $updateBdd = $this->getBdd()->prepare('UPDATE accounts SET balance = :balance WHERE id = :id and idAccount = :idAccount');
         $updateBdd->bindValue(':id', $user->getId(), PDO::PARAM_INT);
         $updateBdd->bindValue(':idAccount', $user->getIdAccount(), PDO::PARAM_INT);
-        $updateBdd->bindValue(':balance', $user->getBalance(), PDO::PARAM_STR);
+        $updateBdd->bindValue(':balance', $user->getBalance(), PDO::PARAM_INT);
         $updateBdd->execute();
     }
 

@@ -17,7 +17,7 @@ class UserManager
     public function verifUser(User $user)
     {
         $query = $this->getBdd()->prepare('SELECT * FROM user WHERE name = :name');
-        $query->bindValue(':name', $user->getName(), PDO::PARAM_INT);
+        $query->bindValue(':name', $user->getName(), PDO::PARAM_STR);
         $query->execute();
         $users = $query->fetchAll(PDO::FETCH_ASSOC);
         foreach ($users as $getUser) {
@@ -34,7 +34,7 @@ class UserManager
     public function verifUserDispo(User $user)
     {
         $query = $this->getBdd()->prepare('SELECT * FROM user WHERE name = :name');
-        $query->bindValue(':name', $user->getName(), PDO::PARAM_INT);
+        $query->bindValue(':name', $user->getName(), PDO::PARAM_STR);
         $query->execute();
         $users = $query->fetchAll(PDO::FETCH_ASSOC);
         foreach ($users as $getUser) {
@@ -67,7 +67,7 @@ class UserManager
     {
         $updateBdd = $this->_bdd->prepare('UPDATE user SET verifConnect = :verifConnect WHERE id = :id');
         $updateBdd->bindValue(':id', $user->getId(), PDO::PARAM_INT);
-        $updateBdd->bindValue(':verifConnect', $user->getVerifConnect(), PDO::PARAM_STR);
+        $updateBdd->bindValue(':verifConnect', $user->getVerifConnect(), PDO::PARAM_INT);
         $updateBdd->execute();
     }
 
@@ -92,7 +92,7 @@ class UserManager
     public function getUserByName(string $name)
     {
         $query = $this->getBdd()->prepare('SELECT * FROM user WHERE name = :name');
-        $query->bindValue(':name', $name, PDO::PARAM_INT);
+        $query->bindValue(':name', $name, PDO::PARAM_STR);
         $query->execute();
         $user = $query->fetchAll(PDO::FETCH_ASSOC);
         foreach ($user as $getUser) {
