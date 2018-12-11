@@ -88,7 +88,12 @@ class UserManager
         }
     }
 
-    /** get user by name */
+    /**
+     * get user by name
+     *
+     * @param string $name
+     * @return self
+     */
     public function getUserByName(string $name)
     {
         $query = $this->getBdd()->prepare('SELECT * FROM user WHERE name = :name');
